@@ -175,12 +175,12 @@ public class ProductManageController {
                 resultMap.put("msg", "上传失败");
                 return resultMap;
             }
-            String url = PropertiesUtil.getProperty("ftp.server.http.prefix" + targetFileName);
+            String url = PropertiesUtil.getProperty("ftp.server.http.prefix") + targetFileName;
             resultMap.put("success", true);
             resultMap.put("msg", "上传成功");
             resultMap.put("file_path", url);
             /*修改返回的header*/
-            response.addHeader("Access-Control-Allow-Headers","X-File-Name");
+            response.addHeader("Access-Control-Allow-Headers", "X-File-Name");
             return resultMap;
         } else {
             resultMap.put("success", false);
