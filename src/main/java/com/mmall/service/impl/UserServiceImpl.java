@@ -23,6 +23,13 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper UserMapper;
 
+    /**
+     * @Description:登陆实现方法
+     * @Param: [username, password]
+     * @return: com.mmall.common.ServerRespose<com.mmall.pojo.User>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     @Override
     public ServerRespose<User> login(String username, String password) {
         int resultCount = UserMapper.checkUsername(username);
@@ -41,6 +48,13 @@ public class UserServiceImpl implements IUserService {
 
     }
 
+    /**
+     * @Description:
+     * @Param: [user]
+     * @return: com.mmall.common.ServerRespose<java.lang.String>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<String> register(User user) {
         ServerRespose checkserverRespose = this.checkVild(user.getUsername(), Const.USERNAME);
         if (!checkserverRespose.isSuccess()) {
@@ -60,6 +74,13 @@ public class UserServiceImpl implements IUserService {
         return ServerRespose.createBySuccessMessage("注册成功");
     }
 
+    /**
+     * @Description:
+     * @Param: [str, type]
+     * @return: com.mmall.common.ServerRespose<java.lang.String>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<String> checkVild(String str, String type) {
         if (StringUtils.isNotBlank(type)) {
             //开始校验
@@ -81,6 +102,13 @@ public class UserServiceImpl implements IUserService {
         return ServerRespose.createBySuccessMessage("校验成功");
     }
 
+    /**
+     * @Description:
+     * @Param: [username]
+     * @return: com.mmall.common.ServerRespose<java.lang.String>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<String> selectQuestion(String username) {
         ServerRespose serverrespose = this.checkVild(username, Const.USERNAME);
         if (serverrespose.isSuccess()) {
@@ -93,6 +121,13 @@ public class UserServiceImpl implements IUserService {
         return ServerRespose.createByErrorMessage("找回密码的问题是空的");
     }
 
+    /**
+     * @Description:
+     * @Param: [username, question, answer]
+     * @return: com.mmall.common.ServerRespose<java.lang.String>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<String> checkQusertionAnswer(String username, String question, String answer) {
         int resultCount = UserMapper.checkAnswer(username, question, answer);
         if (resultCount > 0) {
@@ -103,6 +138,13 @@ public class UserServiceImpl implements IUserService {
         return ServerRespose.createByErrorMessage("答案错误");
     }
 
+    /**
+     * @Description:
+     * @Param: [username, passwordNew, forgetToken]
+     * @return: com.mmall.common.ServerRespose<java.lang.String>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<String> forgetrestpassword(String username, String passwordNew, String forgetToken) {
         if (StringUtils.isBlank(forgetToken)) {
             return ServerRespose.createByErrorMessage("token需要传递");
@@ -127,6 +169,13 @@ public class UserServiceImpl implements IUserService {
         return ServerRespose.createByErrorMessage("密码修改失败");
     }
 
+    /**
+     * @Description:
+     * @Param: [user, passwordOld, passwordNew]
+     * @return: com.mmall.common.ServerRespose<java.lang.String>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<String> resetPassword(User user, String passwordOld, String passwordNew) {
         //防止横向越权再次校验用户名和该用户名的密码
         int rowCount = UserMapper.checkPassword(MD5Util.MD5EncodeUtf8(passwordOld), user.getId());
@@ -142,6 +191,13 @@ public class UserServiceImpl implements IUserService {
 
     }
 
+    /**
+     * @Description:
+     * @Param: [user]
+     * @return: com.mmall.common.ServerRespose<com.mmall.pojo.User>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<User> updateInformation(User user) {
         int emailCount = UserMapper.checkEmailByUserId(user.getEmail(), user.getId());
         if (emailCount > 0) {
@@ -161,6 +217,13 @@ public class UserServiceImpl implements IUserService {
         return ServerRespose.createByErrorMessage("更新个人信息失败");
     }
 
+    /**
+     * @Description:
+     * @Param: [userId]
+     * @return: com.mmall.common.ServerRespose<com.mmall.pojo.User>
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose<User> getInformation(Integer userId) {
         User user = UserMapper.selectByPrimaryKey(userId);
         if (user == null) {
@@ -170,6 +233,13 @@ public class UserServiceImpl implements IUserService {
         return ServerRespose.createBySuccess(user);
     }
 
+    /**
+     * @Description:
+     * @Param: [user]
+     * @return: com.mmall.common.ServerRespose
+     * @Author: BoWei
+     * @Date: 2018/3/22
+     */
     public ServerRespose checkAdminRole(User user) {
         if (user != null && user.getRole().intValue() == Const.Role.ROLE_ADMIN) {
             return ServerRespose.createBySuccess();
