@@ -24,6 +24,13 @@ public class ProductController {
         return iproductService.getProductDetail(productId);
     }
 
+    /** 
+    * @Description: test
+    * @Param: [keyboard, categoryId, pageNum, pageSize, odorBy] 
+    * @return: com.mmall.common.ServerRespose<com.github.pagehelper.PageInfo> 
+    * @Author: BoWei 
+    * @Date: 2018/3/30 
+    */
     @RequestMapping("list.do")
     @ResponseBody
     public ServerRespose<PageInfo> list(@RequestParam(value = "keyboard", required = false) String keyboard,
