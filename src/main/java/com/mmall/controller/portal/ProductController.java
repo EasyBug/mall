@@ -4,7 +4,6 @@ import com.github.pagehelper.PageInfo;
 import com.mmall.common.ServerRespose;
 import com.mmall.service.IproductService;
 import com.mmall.vo.ProductDetailVo;
-import com.mmall.vo.ProductListVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +23,7 @@ public class ProductController {
         return iproductService.getProductDetail(productId);
     }
 
-    /** 
-    * @Description: test
-    * @Param: [keyboard, categoryId, pageNum, pageSize, odorBy] 
-    * @return: com.mmall.common.ServerRespose<com.github.pagehelper.PageInfo> 
-    * @Author: BoWei 
-    * @Date: 2018/3/30 
-    */
+
     @RequestMapping("list.do")
     @ResponseBody
     public ServerRespose<PageInfo> list(@RequestParam(value = "keyboard", required = false) String keyboard,
