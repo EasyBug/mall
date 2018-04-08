@@ -168,6 +168,7 @@ public class ProductManageController {
             return resultMap;
         }
         if (iUserService.checkAdminRole(user).isSuccess()) {
+             /*获取Tomcat服务器目录下的upload文件夹*/
             String path = request.getSession().getServletContext().getRealPath("upload");
             String targetFileName = iFileService.upload(file, path);
             if (StringUtils.isBlank(targetFileName)) {
