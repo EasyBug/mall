@@ -47,8 +47,13 @@
       <root url="jar://$PROJECT_DIR$/target/mmall/WEB-INF/lib/core-2.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/target/mmall/WEB-INF/lib/commons-dbcp-1.4.jar!/" />
       <root url="jar://$PROJECT_DIR$/target/mmall/WEB-INF/lib/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/alipay-sdk-java20161213173952.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/alipay-trade-sdk-20161215.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/alipay-trade-sdk-20161215-source.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/alipay-sdk-java20161213173952-source.jar!/com/alipay/api" />
+    </SOURCES>
   </library>
 </component>
