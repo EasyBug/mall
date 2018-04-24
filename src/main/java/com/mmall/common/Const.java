@@ -81,6 +81,16 @@ public class Const {
         public int getCode() {
             return code;
         }
+
+        public static OrderStatusEnum codeof(int code) {
+            for (OrderStatusEnum orderStatusEnum : values()) {
+                if (orderStatusEnum.getCode() == code) {
+                    return orderStatusEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
+        }
+
     }
 
     //通知交易状态
@@ -110,6 +120,35 @@ public class Const {
 
         public int getCode() {
             return code;
+        }
+    }
+
+    public enum PaymentTypeEnum {
+        ONL_INE_PAY(1, "在线支付");
+
+        PaymentTypeEnum(int code, String value) {
+            this.code = code;
+            this.value = value;
+        }
+
+        private String value;
+        private int code;
+
+        public String getValue() {
+            return value;
+        }
+
+        public int getCode() {
+            return code;
+        }
+
+        public static PaymentTypeEnum codeof(int code) {
+            for (PaymentTypeEnum paymentTypeEnum : values()) {
+                if (paymentTypeEnum.getCode() == code) {
+                    return paymentTypeEnum;
+                }
+            }
+            throw new RuntimeException("没有找到对应的枚举");
         }
     }
 }
