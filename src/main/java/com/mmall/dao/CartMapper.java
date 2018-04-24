@@ -30,4 +30,6 @@ public interface CartMapper {
 
     int selectCartProductCount(@Param("userId") Integer userId);
 
+    List<Cart> selectCheckedByUserId(Integer userId);
+
 }
