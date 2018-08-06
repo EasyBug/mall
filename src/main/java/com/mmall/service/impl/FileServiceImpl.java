@@ -3,6 +3,7 @@ package com.mmall.service.impl;
 import com.google.common.collect.Lists;
 import com.mmall.service.IFileService;
 import com.mmall.util.FTPUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -20,9 +21,10 @@ import java.util.UUID;
  * @create: 2018-03-26 10:49
  **/
 @Service("iFileServiceImpl")
+@Slf4j
 public class FileServiceImpl implements IFileService {
 
-    private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
+    //private Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
 
     public String upload(MultipartFile file, String path) {
         String filename = file.getOriginalFilename();
@@ -31,7 +33,7 @@ public class FileServiceImpl implements IFileService {
         //从文件名最后一个字母读取直道碰到第一个 . 号再 + 1变为想要的扩展名
         String fileExtensionName = filename.substring(filename.lastIndexOf(".") + 1);
         String uploadFileName = UUID.randomUUID() + "." + fileExtensionName;
-        logger.info("开始上传文件,上传文件的文件名:{},上传文件的路径:{},新文件名:{}", filename, path, uploadFileName);
+        log.info("开始上传文件,上传文件的文件名:{},上传文件的路径:{},新文件名:{}", filename, path, uploadFileName);
         /*创建目录并判断*/
         File fileDir = new File(path);
         if (!fileDir.exists()) {
@@ -47,7 +49,7 @@ public class FileServiceImpl implements IFileService {
            /* 上传完之后删除upload 下面的文件*/
             targerFile.delete();
         } catch (IOException e) {
-            logger.error("文件上传异常", e);
+            log.error("文件上传异常", e);
             return null;
         }
         return targerFile.getName();

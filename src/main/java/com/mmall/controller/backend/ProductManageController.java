@@ -10,7 +10,6 @@ import com.mmall.service.IFileService;
 import com.mmall.service.IUserService;
 import com.mmall.service.IproductService;
 import com.mmall.util.PropertiesUtil;
-import com.sun.deploy.net.HttpResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
-import java.util.Properties;
 
 @Controller
 @RequestMapping("/manage/product")

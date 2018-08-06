@@ -6,6 +6,7 @@ import com.mmall.common.ServerRespose;
 import com.mmall.dao.CategoryMapper;
 import com.mmall.pojo.Category;
 import com.mmall.service.ICategoryService;
+import lombok.extern.slf4j.Slf4j;
 import net.sf.jsqlparser.schema.Server;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -17,9 +18,10 @@ import org.springframework.util.CollectionUtils;
 import java.util.*;
 
 @Service("iCategoryService")
+@Slf4j
 public class CategoryServiceImpl implements ICategoryService {
 
-    private Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
+    //private Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
     @Autowired
     private CategoryMapper categoryMapper;
 
@@ -55,7 +57,7 @@ public class CategoryServiceImpl implements ICategoryService {
     public ServerRespose<List<Category>> getChildrenParallelCategory(Integer catagoryId) {
         List<Category> categoryList = categoryMapper.selectCategoryChildrenByParentId(catagoryId);
         if (CollectionUtils.isEmpty(categoryList)) {
-            logger.info("未找到当前分类子分类");
+            log.info("未找到当前分类子分类");
         }
         return ServerRespose.createBySuccess(categoryList);
     }
