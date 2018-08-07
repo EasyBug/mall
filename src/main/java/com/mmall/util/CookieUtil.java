@@ -43,6 +43,7 @@ public class CookieUtil {
         /* 单位是秒,如果这个maxage不设置的话，cookie是不会写入硬盘的，而是写入内存。只有当前页面有效 */
         ck.setMaxAge(60 * 60 *24 * 365);
         log.info("write cookieName:{},cookieValue:{}",ck.getName(),ck.getValue());
+        response.addCookie(ck);
     }
 
     public static void delLoginToken(HttpServletRequest request,HttpServletResponse response){
