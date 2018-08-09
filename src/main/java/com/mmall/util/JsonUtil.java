@@ -101,7 +101,7 @@ public class JsonUtil {
 
 
     public static void main(String[] args) {
-        User u1 = new User();
+      /*  User u1 = new User();
         u1.setId(1);
         u1.setEmail("zbw@126.com");
 
@@ -127,7 +127,7 @@ public class JsonUtil {
         List<User> userListObj2 = JsonUtil.string2Obj(userListStr,List.class,User.class);
         log.info("====================");
         log.info(userListStr);
-        System.out.println("end");
+        System.out.println("end");*/
     }
 
 
