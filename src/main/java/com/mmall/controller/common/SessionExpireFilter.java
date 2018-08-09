@@ -5,7 +5,7 @@ import com.mmall.pojo.User;
 import com.mmall.util.CookieUtil;
 import com.mmall.util.JsonUtil;
 import com.mmall.util.RedisPoolUtil;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
