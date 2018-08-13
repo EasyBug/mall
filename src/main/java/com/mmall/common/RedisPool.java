@@ -61,11 +61,4 @@ public class RedisPool {
         pool.returnResource(jedis);
     }
 
-    public static void main(String[] args) {
-            Jedis jedis = pool.getResource();
-            jedis.set("zbw","zbw");
-            returnResource(jedis);
-            pool.destroy();
-            System.out.println("program is end");
-    }
 }
