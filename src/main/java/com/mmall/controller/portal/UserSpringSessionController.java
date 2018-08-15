@@ -61,7 +61,7 @@ public class UserSpringSessionController {
         if (user != null) {
             return ServerRespose.createBySuccess(user);
         }
-        return ServerRespose.createByErrorMessage("用户未登陆,获取信息失败");
+        return ServerRespose.createByErrorMessage("用户未登陆.获取信息失败");
     }
 
 
